@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
   <script src="main.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
@@ -18,7 +18,7 @@
       <h2 class="subTitle">Find recipes based on in-season ingredients</h2>
     </section>
     <form class="landingForm">
-      What's in season in <select>
+      What's in season in <select id="userMonth">
         <option value="January">January</option>
         <option value="February">February</option>
         <option value="March">March</option>
@@ -32,7 +32,7 @@
         <option value="November">November</option>
         <option value="December">December</option>
       </select>
-      <input type="submit" value="Go!"> 
+      <input type="submit" value="Go!" class="submitButton"> 
     </form>
   </div>
 </body>
