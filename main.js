@@ -1323,7 +1323,7 @@ const produceList = [
 
 
 function watchForm(){
-    $('.submitButton').submit(event => {
+    $('form').submit(event => {
         event.preventDefault();
         const selectedMonth = $('#userMonth').val();
         console.log(selectedMonth);
