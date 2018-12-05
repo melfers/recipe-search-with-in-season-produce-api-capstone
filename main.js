@@ -1326,7 +1326,7 @@ function produceListener(){
         event.preventDefault();
     });
     $('#produceSection').on('click', 'li', event => {
-        console.log($(this).html());
+        console.log($(event.target).text());
     });
 }
 
@@ -1335,9 +1335,9 @@ function displayProduce(userInput){
     $('.producePage').removeClass('hidden');
     $('#produceTitle').html(`Here's what's in season in ${userInput}`);
     $('.seasonalProduce').html(`
-    <li class='produceItem' value='one'>Item one</li>
-    <li class='produceItem' value='one'>Item two</li>
-    <li class='produceItem' value='one'>Item three</li>
+    <li class='produceItem' id='produce'>Item one</li>
+    <li class='produceItem' id='produce'>Item two</li>
+    <li class='produceItem' id='produce'>Item three</li>
     `);
     produceListener();
 }
