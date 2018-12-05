@@ -11,7 +11,7 @@
 <body>
   <header>
   </header>
-  <div class="main">
+  <div class="landingPage">
     <section>
       <h1 class="mainTitle">Season</h1>
       <h2 class="subTitle">Find recipes based on in-season ingredients</h2>
@@ -31,8 +31,21 @@
         <option value="November">November</option>
         <option value="December">December</option>
       </select>
-      <input type="submit" value="Go!" class="submitButton"> 
+      <input type="submit" value="Go!" class="landingSubmit"> 
     </form>
+  </div>
+  <div class="producePage hidden">
+    <section id="produceSection">
+      <h1 class="mainTitle" id="produceTitle"></h1>
+      <h2 class="subTitle">Select up to four ingredients to find a recipe</h2>
+      <ul class="seasonalProduce"></ul>
+      <input type="submit" value="View recipes" id="recipeSubmit">
+    </section>
+  </div>
+  <div class="recipePage hidden">
+      <h1 class="mainTitle"></h1>
+      <ul class="seasonalProduce"></ul>
+      <input type="submit" value="View recipes">
   </div>
   <script src="main.js"></script>
 </body>

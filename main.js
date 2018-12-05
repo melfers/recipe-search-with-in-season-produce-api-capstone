@@ -1321,12 +1321,33 @@ const produceList = [
     }
   ]
 
+function produceListener(){
+    $('#produceSection').submit(event => {
+        event.preventDefault();
+    });
+    $('#produceSection').on('click', 'li', event => {
+        console.log($(this).html());
+    });
+}
+
+function displayProduce(userInput){
+    $('.landingPage').addClass('hidden');
+    $('.producePage').removeClass('hidden');
+    $('#produceTitle').html(`Here's what's in season in ${userInput}`);
+    $('.seasonalProduce').html(`
+    <li class='produceItem' value='one'>Item one</li>
+    <li class='produceItem' value='one'>Item two</li>
+    <li class='produceItem' value='one'>Item three</li>
+    `);
+    produceListener();
+}
 
 function watchForm(){
     $('form').submit(event => {
         event.preventDefault();
         const selectedMonth = $('#userMonth').val();
         console.log(selectedMonth);
+        displayProduce(selectedMonth);
     });
 }
 
