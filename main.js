@@ -1323,7 +1323,17 @@ const produceList = [
 
 let userQuery = '';  
 
-function fetchRecipes(query){
+function displayRecipes(responseJson){
+    $('.producePage').addClass('hidden');
+    $('.recipePage').removeClass('hidden');
+    for (let i=0; i < responseJson.hits.length; i++){
+        $('.seasonalRecipes').append(`
+        <li><h3><a href="${responseJson.hits[i].recipe.uri}">
+        ${responseJson.hits[i].recipe.label}</a></h3></li>
+        `)};
+}
+
+function fetchRecipes(){
     let searchUrl = `https://api.edamam.com/search?q=${userQuery}&app_id=f8a0d09e&app_key=e4b27fdabecbbf429ab8c33ad157001d`;
     console.log(searchUrl);
     fetch(searchUrl)
@@ -1333,7 +1343,7 @@ function fetchRecipes(query){
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => console.log(responseJson))
+    .then(responseJson => displayRecipes(responseJson))
     .catch(err => {
       console.log(err.message);
     });
