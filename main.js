@@ -1324,15 +1324,26 @@ const produceList = [
 let userQuery = '';  
 
 function fetchRecipes(query){
-    let searchUrl = `https://api.edamam.com/search?=${userQuery}&app_id=f8a0d09e&app_key=e4b27fdabecbbf429ab8c33ad157001d`;
+    let searchUrl = `https://api.edamam.com/search?q=${userQuery}&app_id=f8a0d09e&app_key=e4b27fdabecbbf429ab8c33ad157001d`;
     console.log(searchUrl);
+    fetch(searchUrl)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => console.log(responseJson))
+    .catch(err => {
+      console.log(err.message);
+    });
 }
 
 function produceListener(){
     $('#produceSection').on('click', 'li', event => {
         const clickedItem = $(event.target).text();
         if (userQuery != ''){
-            userQuery += '&' + encodeURIComponent(clickedItem);
+            userQuery += '+' + encodeURIComponent(clickedItem);
         } else {
             userQuery = encodeURIComponent(clickedItem);
         }
