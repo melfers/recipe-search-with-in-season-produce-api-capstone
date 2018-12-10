@@ -78,7 +78,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "Coming in",
+      "Purple broccoli": "Coming in",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "",
@@ -188,7 +188,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "At its best",
+      "Purple broccoli": "At its best",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "",
@@ -298,7 +298,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "Coming in",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "At its best",
+      "Purple broccoli": "At its best",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "",
@@ -408,7 +408,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "At its best",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "At its best",
+      "Purple broccoli": "At its best",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "Coming in",
@@ -518,7 +518,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "At its best",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "At its best",
@@ -628,7 +628,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "At its best",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "At its best",
@@ -738,7 +738,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "At its best",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "At its best",
@@ -848,7 +848,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "",
       "Pumpkin": "",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "",
       "Radicchio": "At its best",
       "Radish": "At its best",
@@ -958,7 +958,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "",
       "Pumpkin": "Coming in",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "Coming in",
       "Radicchio": "At its best",
       "Radish": "At its best",
@@ -1068,7 +1068,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "",
       "Pumpkin": "At its best",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "At its best",
       "Radicchio": "At its best",
       "Radish": "At its best",
@@ -1178,7 +1178,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "",
       "Pumpkin": "At its best",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "At its best",
       "Radicchio": "At its best",
       "Radish": "",
@@ -1288,7 +1288,7 @@ const produceList = [
       "Pork": "At its best",
       "Potato": "",
       "Pumpkin": "At its best",
-      "Purple sprouting broccoli": "",
+      "Purple broccoli": "",
       "Quince": "At its best",
       "Radicchio": "At its best",
       "Radish": "",
@@ -1323,14 +1323,26 @@ const produceList = [
 
 let userQuery = '';  
 
+function resetPage(){
+    $('#restartApp').click(function(event){
+        $('.seasonalRecipes').empty();
+        $('.recipePage').addClass('hidden');
+        $('.landingPage').removeClass('hidden');
+        userQuery = '';
+    });
+}
+
 function displayRecipes(responseJson){
     $('.producePage').addClass('hidden');
     $('.recipePage').removeClass('hidden');
     for (let i=0; i < responseJson.hits.length; i++){
         $('.seasonalRecipes').append(`
         <li><h3><a href="${responseJson.hits[i].recipe.uri}">
-        ${responseJson.hits[i].recipe.label}</a></h3></li>
+        ${responseJson.hits[i].recipe.label}</a></h3>
+        <img src="${responseJson.hits[i].recipe.image}">
+        </li>
         `)};
+    resetPage();
 }
 
 function fetchRecipes(){
@@ -1352,7 +1364,7 @@ function fetchRecipes(){
 function produceListener(){
     $('#produceSection').on('click', 'li', event => {
         const clickedItem = $(event.target).text();
-        if (userQuery != ''){
+        if (userQuery != ''){   
             userQuery += '+' + encodeURIComponent(clickedItem);
         } else {
             userQuery = encodeURIComponent(clickedItem);

@@ -5,3 +5,50 @@
 .hidden {
     display: none;
 }
+
+body {
+    background-image: url("oranges.jpg");
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+}
+
+.landingPage {
+    padding-top: 25%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.produceItem {
+    list-style-type: none;
+    background-color: white;
+    color: darkgray;
+    width: 125px;
+    height: 50px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.seasonalRecipes {
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+    text-align: left;
+    width: 60%;
+    margin: auto;
+}
+
+a {
+    color: darkgrey;
+}
+
+input {
+    background-color: white;
+    color: darkgray;
+    border-radius: 3px;
+}
