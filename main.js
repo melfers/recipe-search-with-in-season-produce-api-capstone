@@ -1326,6 +1326,7 @@ let userQuery = '';
 function resetPage(){
     $('#restartApp').click(function(event){
         $('.seasonalRecipes').empty();
+        $('.seasonalProduce').empty();
         $('.recipePage').addClass('hidden');
         $('.landingPage').removeClass('hidden');
         userQuery = '';
@@ -1335,13 +1336,17 @@ function resetPage(){
 function displayRecipes(responseJson){
     $('.producePage').addClass('hidden');
     $('.recipePage').removeClass('hidden');
-    for (let i=0; i < responseJson.hits.length; i++){
-        $('.seasonalRecipes').append(`
-        <li><h3><a href="${responseJson.hits[i].recipe.uri}">
-        ${responseJson.hits[i].recipe.label}</a></h3>
-        <img src="${responseJson.hits[i].recipe.image}">
-        </li>
-        `)};
+    if (responseJson.length == 0) {
+        $('.seasonalRecipes').append(`I'm sorry, there are no recipes containing those ingredients.`);
+    } else {
+        for (let i=0; i < responseJson.hits.length; i++){
+            $('.seasonalRecipes').append(`
+            <li class="recipeCard"><h3><a href="${responseJson.hits[i].recipe.shareAs}">
+            ${responseJson.hits[i].recipe.label}</a></h3>
+            <img src="${responseJson.hits[i].recipe.image}">
+            </li>
+            `)}
+    };
     resetPage();
 }
 
@@ -1363,6 +1368,7 @@ function fetchRecipes(){
 
 function produceListener(){
     $('#produceSection').on('click', 'li', event => {
+        $(event.target).addClass('clicked')
         const clickedItem = $(event.target).text();
         if (userQuery != ''){   
             userQuery += '+' + encodeURIComponent(clickedItem);
@@ -1377,10 +1383,11 @@ function produceListener(){
     });
 }
 
-function displayProduce(produceList){
+function displayProduce(produceList, month){
     $('.landingPage').addClass('hidden');
+    $('.landingLogo').css('height', '50px');
     $('.producePage').removeClass('hidden');
-    $('#produceTitle').html(`Here's what's currently in season:`);
+    $('#produceTitle').html(`Here's what's in season during ${month}:`);
     produceList.forEach(appendProduceArray);
     produceListener();
 }
@@ -1400,7 +1407,7 @@ function findInSeasonProduce(userInput){
             monthObj.push(item);
         }
     }
-    displayProduce(monthObj);
+    displayProduce(monthObj, userInput);
 }
 
 function watchForm(){

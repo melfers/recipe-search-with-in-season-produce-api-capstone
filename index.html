@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Season - Recipes from In-Season Produce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Serif+TC" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
+    <img src="salt.png" class="landingLogo">
   </header>
   <div class="landingPage">
     <section>
-      <h1 class="mainTitle">Season</h1>
+      <h1 class="headerTitle">S e a s o n</h1>
       <h2 class="subTitle">Find recipes based on in-season ingredients</h2>
     </section>
     <form class="landingForm">
@@ -38,13 +39,14 @@
   <div class="producePage hidden">
     <section id="produceSection">
       <h1 class="mainTitle" id="produceTitle"></h1>
-      <h2 class="subTitle">Select up to four ingredients to find a recipe</h2>
+      <h2 class="subTitle">Select the ingredients you'd like to find recipes for</h2>
       <ul class="seasonalProduce"></ul>
       <input type="submit" value="View recipes" id="recipeSubmit">
     </section>
   </div>
   <div class="recipePage hidden">
-      <h1 class="mainTitle">Recipes:</h1>
+      <h1 class="mainTitle recipeTitle hidden">Voila</h1>
+      <h2 class="subTitle recipeTitle hidden">Here are your recipes:</h2>
       <ul class="seasonalRecipes"></ul>
       <input type="submit" value="Restart" id="restartApp">
   </div>
