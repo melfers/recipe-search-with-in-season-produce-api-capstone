@@ -1336,9 +1336,11 @@ function resetPage(){
 function displayRecipes(responseJson){
     $('.producePage').addClass('hidden');
     $('.recipePage').removeClass('hidden');
-    if (responseJson.length == 0) {
-        $('.seasonalRecipes').append(`I'm sorry, there are no recipes containing those ingredients.`);
+    if (responseJson.count == 0) {
+        console.log('count 0')
+        $('.seasonalRecipes').append(`<p>I'm sorry!<br>There are no recipes containing those ingredients.</p>`);
     } else {
+        $('.recipeTitle').removeClass('hidden');
         for (let i=0; i < responseJson.hits.length; i++){
             $('.seasonalRecipes').append(`
             <li class="recipeCard"><h3><a href="${responseJson.hits[i].recipe.shareAs}">
