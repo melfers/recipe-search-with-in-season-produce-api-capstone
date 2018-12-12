@@ -1325,11 +1325,7 @@ let userQuery = '';
 
 function resetPage(){
     $('#restartApp').click(function(event){
-        $('.seasonalRecipes').empty();
-        $('.seasonalProduce').empty();
-        $('.recipePage').addClass('hidden');
-        $('.landingPage').removeClass('hidden');
-        userQuery = '';
+        document.location.reload()
     });
 }
 
@@ -1372,11 +1368,15 @@ function produceListener(){
     $('#produceSection').on('click', 'li', event => {
         $(event.target).addClass('clicked')
         const clickedItem = $(event.target).text();
-        if (userQuery != ''){   
-            userQuery += '+' + encodeURIComponent(clickedItem);
-        } else {
+        console.log(clickedItem);
+        userQuery = $('.currentUserQuery').val();
+        console.log(userQuery);
+        if (userQuery == '' || userQuery == undefined){   
             userQuery = encodeURIComponent(clickedItem);
+        } else {
+            userQuery += '+' + encodeURIComponent(clickedItem);
         }
+        $('.currentUserQuery').val(userQuery);
         console.log(userQuery);
     });
     $('#recipeSubmit').click(event => {
@@ -1390,13 +1390,15 @@ function displayProduce(produceList, month){
     $('.landingLogo').css('height', '50px');
     $('.producePage').removeClass('hidden');
     $('#produceTitle').html(`Here's what's in season during ${month}:`);
-    produceList.forEach(appendProduceArray);
+    $.each(produceList, function (produceListKey, produceListValue) {
+        appendProduceArray(produceListValue);
+    });
     produceListener();
 }
 
 function appendProduceArray(item){
     $('.seasonalProduce').append(`
-            <li class='produceItem' id='produce'>${item}</li>
+            <li class='produceItem'>${item}</li>
         `);
 }
 
