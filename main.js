@@ -1340,7 +1340,6 @@ function displayRecipes(responseJson){
     $('.producePage').addClass('hidden');
     $('.recipePage').removeClass('hidden');
     if (responseJson.count == 0) {
-        console.log('count 0')
         $('.seasonalRecipes').append(`<p>I'm sorry!<br>There are no recipes containing those ingredients.</p>`);
     } else {
         $('.recipeTitle').removeClass('hidden');
@@ -1358,7 +1357,6 @@ function displayRecipes(responseJson){
 //APIrequest to get recipes with the user's inputted ingredients
 function fetchRecipes(){
     let searchUrl = `https://api.edamam.com/search?q=${userQuery}&app_id=f8a0d09e&app_key=e4b27fdabecbbf429ab8c33ad157001d`;
-    console.log(searchUrl);
     fetch(searchUrl)
     .then(response => {
       if (response.ok) {
@@ -1378,16 +1376,13 @@ function produceListener(){
     $('#produceSection').on('click', 'li', event => {
         $(event.target).addClass('clicked')
         const clickedItem = $(event.target).text();
-        console.log(clickedItem);
         userQuery = $('.currentUserQuery').val();
-        console.log(userQuery);
         if (userQuery == '' || userQuery == undefined){   
             userQuery = encodeURIComponent(clickedItem);
         } else {
             userQuery += '+' + encodeURIComponent(clickedItem);
         }
         $('.currentUserQuery').val(userQuery);
-        console.log(userQuery);
     });
     $('#recipeSubmit').click(event => {
         event.preventDefault();
@@ -1418,7 +1413,6 @@ function appendProduceArray(item){
 function findInSeasonProduce(userInput){
     const monthObj = [];
     const monthIndex = produceList.findIndex(x => x.Month == userInput);
-    console.log(monthIndex);
     for (let item in produceList[monthIndex]){
         if (produceList[monthIndex][item] != "" && item != "Month"){
             monthObj.push(item);
@@ -1432,7 +1426,6 @@ function watchForm(){
     $('form').submit(event => {
         event.preventDefault();
         const selectedMonth = $('#userMonth').val();
-        console.log(selectedMonth);
         findInSeasonProduce(selectedMonth);
     });
 }
