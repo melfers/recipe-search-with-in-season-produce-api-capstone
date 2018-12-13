@@ -1,5 +1,6 @@
-# recipe-search-with-in-season-produce-api-capstone
-Searches for recipes based on produce that is in-season for the current month.
+# Season
+Searches for recipes based on produce that is in-season for the current or user-selected month.
+Link: https://melfers.github.io/recipe-search-with-in-season-produce-api-capstone/
 
 ## UX Wireframes and User Stories
 
