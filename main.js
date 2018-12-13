@@ -1,3 +1,8 @@
+/*Hi there! 
+Wanted to quickly note that although I would have liked to use an API to gather the in-season data for produce, 
+I wasn't able to find one, so I had to hard-code it in myself, which you'll see below.
+*/ 
+
 const produceList = [
     {
       "Month": "January",
@@ -1323,12 +1328,14 @@ const produceList = [
 
 let userQuery = '';  
 
+//resetsPage after showing recipes
 function resetPage(){
     $('#restartApp').click(function(event){
         document.location.reload()
     });
 }
 
+//displays recipe cards on recipePage, hides producePage
 function displayRecipes(responseJson){
     $('.producePage').addClass('hidden');
     $('.recipePage').removeClass('hidden');
@@ -1341,13 +1348,14 @@ function displayRecipes(responseJson){
             $('.seasonalRecipes').append(`
             <li class="recipeCard"><h3><a href="${responseJson.hits[i].recipe.shareAs}">
             ${responseJson.hits[i].recipe.label}</a></h3>
-            <img src="${responseJson.hits[i].recipe.image}">
+            <img src="${responseJson.hits[i].recipe.image}" alt="${responseJson.hits[i].recipe.label}">
             </li>
             `)}
     };
     resetPage();
 }
 
+//APIrequest to get recipes with the user's inputted ingredients
 function fetchRecipes(){
     let searchUrl = `https://api.edamam.com/search?q=${userQuery}&app_id=f8a0d09e&app_key=e4b27fdabecbbf429ab8c33ad157001d`;
     console.log(searchUrl);
@@ -1360,10 +1368,12 @@ function fetchRecipes(){
     })
     .then(responseJson => displayRecipes(responseJson))
     .catch(err => {
+    $('#js-error-message').text(`Something went wrong: ${err.message}`);
       console.log(err.message);
     });
 }
 
+//listens for user to select types of produce to be searched for
 function produceListener(){
     $('#produceSection').on('click', 'li', event => {
         $(event.target).addClass('clicked')
@@ -1385,6 +1395,7 @@ function produceListener(){
     });
 }
 
+//dipslays list of in-season produce based on user inputted month, hides landingPage
 function displayProduce(produceList, month){
     $('.landingPage').addClass('hidden');
     $('.landingLogo').css('height', '50px');
@@ -1396,12 +1407,14 @@ function displayProduce(produceList, month){
     produceListener();
 }
 
+//creates list of in-season produce
 function appendProduceArray(item){
     $('.seasonalProduce').append(`
             <li class='produceItem'>${item}</li>
         `);
 }
 
+//finds which produce is in-season based on user selected month
 function findInSeasonProduce(userInput){
     const monthObj = [];
     const monthIndex = produceList.findIndex(x => x.Month == userInput);
@@ -1414,6 +1427,7 @@ function findInSeasonProduce(userInput){
     displayProduce(monthObj, userInput);
 }
 
+//loads landingPage and listens for user input 
 function watchForm(){
     $('form').submit(event => {
         event.preventDefault();
