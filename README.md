@@ -1,6 +1,20 @@
 # Season
-Searches for recipes based on produce that is in-season for the current or user-selected month.
 Link: https://melfers.github.io/recipe-search-with-in-season-produce-api-capstone/
+Season is an app that searches for recipes based on produce that is in-season for the current or user-selected month.
+
+![image of landing page](https://github.com/melfers/recipe-search-with-in-season-produce-api-capstone/blob/master/Photos/landingPage.png)
+![image of landing page](https://github.com/melfers/recipe-search-with-in-season-produce-api-capstone/blob/master/Photos/producePage.png)
+![image of landing page](https://github.com/melfers/recipe-search-with-in-season-produce-api-capstone/blob/master/Photos/recipePage.png)
+
+## Summary
+Season is an app that searches for recipes based on produce that is in-season for the current or user-selected month.
+
+## Technology Used
+This app uses the following technologies:
+-HTML
+-CSS
+-JavaScript
+-jQuery
 
 ## UX Wireframes and User Stories
 
