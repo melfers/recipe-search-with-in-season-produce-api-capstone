@@ -97,6 +97,14 @@ h2 {
   border: 1px solid white;
 }
 
+.landingSubmit {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  border: 1px solid white;
+  height: 50px;
+}
+
 .landingLogo {
   height: 200px;
   margin-top: 5%;
@@ -105,7 +113,11 @@ h2 {
 #userMonth {
   background-color: #ffffff;
   color: darkslategray;
-  height: 20px;
+  height: 30px;
+  width: 125px;
+  font-size: 14px;
+  padding-left: 10px;
+  margin-left: 5px;
 }
 
 .clicked {
