@@ -141,3 +141,9 @@ p {
   font-size: 45px;
   margin: 25px;
 }
+
+@media screen and (max-width: 375px) {
+  .produceItem {
+    width: 100px;
+  }
+}
