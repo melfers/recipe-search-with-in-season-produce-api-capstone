@@ -1,57 +1,77 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Season - Recipes from In-Season Produce</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Serif+TC" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-</head>
-<body>
-  <input type="hidden" class="currentUserQuery" value=''>
-  <header>
-    <img src="Photos/salt.png" class="landingLogo">
-  </header>
-  <div class="landingPage">
-    <h1 class="headerTitle">S e a s o n</h1>
-    <h2 class="subTitle">Find recipes based on in-season ingredients</h2>
-    <form class="landingForm">
-      What's in season in <select id="userMonth">
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-        <option value="December">December</option>
-      </select>
-      <input type="submit" value="Go!" class="landingSubmit"> 
-    </form>
-  </div>
-  <div class="producePage hidden">
-    <h1 class="mainTitle" id="produceTitle"></h1>
-    <h2 class="subTitle">Select the ingredients you'd like to<br>find recipes for</h2>
-    <section id="produceSection" role="results">
-      <ul class="seasonalProduce"></ul>
-      <input type="submit" value="View recipes" id="recipeSubmit">
-    </section>
-  </div>
-  <div class="recipePage hidden">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Season - Recipes from In-Season Produce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Serif+TC"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <input type="hidden" class="currentUserQuery" value="" />
+    <header>
+      <img src="Photos/salt.png" class="landingLogo" />
+    </header>
+    <div class="landingPage">
+      <h1 class="headerTitle">S e a s o n</h1>
+      <h2 class="subTitle">Find recipes based on in-season ingredients</h2>
+      <form class="landingForm">
+        What's in season in
+        <select id="userMonth">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <input type="submit" value="Go!" class="landingSubmit" />
+      </form>
+    </div>
+    <div class="producePage hidden">
+      <h1 class="mainTitle" id="produceTitle"></h1>
+      <h2 class="subTitle">
+        Select the ingredients you'd like to<br />find recipes for:
+      </h2>
+      <section id="produceSection" role="results">
+        <ul class="seasonalProduce"></ul>
+        <input
+          type="submit"
+          value="View recipes"
+          class="submitButton"
+          id="recipeSubmit"
+        />
+      </section>
+    </div>
+    <div class="recipePage hidden">
       <h1 class="mainTitle recipeTitle hidden">Voila!</h1>
       <h2 class="subTitle recipeTitle hidden">Here are your recipes:</h2>
       <section role="results">
         <ul class="seasonalRecipes"></ul>
-        <input type="submit" value="New Search" id="restartApp">
+        <input
+          type="submit"
+          value="New Search"
+          class="submitButton"
+          id="restartApp"
+        />
       </section>
       <p id="js-error-message" class="error-message"></p>
-  </div>
-  <script src="main.js"></script>
-</body>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>
